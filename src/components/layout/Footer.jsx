@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const logoSrc = 'https://www.figma.com/api/mcp/asset/3696d4da-4ba4-462c-b705-d4701546ae92'
@@ -62,41 +63,118 @@ const socialLinks = [
 ]
 
 export default function Footer() {
+  const [winWidth, setWinWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 1200
+  )
+
+  useEffect(() => {
+    function handleResize() {
+      setWinWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const isDesktop = winWidth >= 768
+
   return (
-    <footer className="bg-[#1A3C5E]">
-      <div style={{ padding: '48px 60px' }} className="max-w-[1320px] mx-auto">
-
-        {/* Three-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-
+    <footer style={{ backgroundColor: '#1A3C5E' }}>
+      <div
+        style={{
+          maxWidth: '1320px',
+          margin: '0 auto',
+          padding: '48px 60px',
+          boxSizing: 'border-box',
+        }}
+      >
+        {/* Three-column row */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: isDesktop ? 'row' : 'column',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            gap: '48px',
+          }}
+        >
           {/* Brand column */}
-          <div className="flex flex-col gap-3.5">
-            <div className="flex items-center gap-2">
-              <img src={logoSrc} alt="Rise N Shine Foundation logo" className="h-[22px] w-auto" />
-              <span className="font-bold text-white text-[18px] leading-[27px] whitespace-nowrap" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '14px',
+              flexShrink: 0,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <img src={logoSrc} alt="Rise N Shine Foundation logo" style={{ height: '22px', width: 'auto' }} />
+              <span
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontWeight: '700',
+                  color: '#FFFFFF',
+                  fontSize: '18px',
+                  lineHeight: '27px',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 Rise N Shine Foundation
               </span>
             </div>
-            <p className="italic text-[14px] leading-[21px] text-white/70" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontStyle: 'italic',
+                fontSize: '14px',
+                lineHeight: '21px',
+                color: 'rgba(255,255,255,0.70)',
+                margin: 0,
+              }}
+            >
               Volunteer-powered. Community-driven.
             </p>
-            <p className="text-[13px] leading-[19.5px] text-white/50" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '13px',
+                lineHeight: '19.5px',
+                color: 'rgba(255,255,255,0.50)',
+                margin: 0,
+              }}
+            >
               EIN: 84-3822442
             </p>
           </div>
 
           {/* Quick Links column */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-bold text-[13px] leading-[19.5px] text-white tracking-[1.3px] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <h3
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: '700',
+                fontSize: '13px',
+                lineHeight: '19.5px',
+                color: '#FFFFFF',
+                letterSpacing: '1.3px',
+                textTransform: 'uppercase',
+                margin: 0,
+              }}
+            >
               Quick Links
             </h3>
-            <nav className="flex flex-col gap-2.5">
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {quickLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-[14px] leading-[21px] text-white/70 hover:text-white transition-colors"
-                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: '14px',
+                    lineHeight: '21px',
+                    color: 'rgba(255,255,255,0.70)',
+                    textDecoration: 'none',
+                  }}
+                  className="hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -105,21 +183,46 @@ export default function Footer() {
           </div>
 
           {/* Contact column */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-bold text-[13px] leading-[19.5px] text-white tracking-[1.3px] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <h3
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: '700',
+                fontSize: '13px',
+                lineHeight: '19.5px',
+                color: '#FFFFFF',
+                letterSpacing: '1.3px',
+                textTransform: 'uppercase',
+                margin: 0,
+              }}
+            >
               Contact Us
             </h3>
             <a
               href="mailto:info@risenshinefoundation.org"
-              className="text-[14px] leading-[21px] text-white/70 underline hover:text-white transition-colors"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '14px',
+                lineHeight: '21px',
+                color: 'rgba(255,255,255,0.70)',
+                textDecoration: 'underline',
+              }}
+              className="hover:text-white transition-colors"
             >
               info@risenshinefoundation.org
             </a>
-            <p className="text-[14px] leading-[21px] text-white/70" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '14px',
+                lineHeight: '21px',
+                color: 'rgba(255,255,255,0.70)',
+                margin: 0,
+              }}
+            >
               +1 240-394-9596
             </p>
-            <div className="flex items-center gap-4">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -127,7 +230,8 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="text-white/70 hover:text-white transition-colors"
+                  style={{ color: 'rgba(255,255,255,0.70)' }}
+                  className="hover:text-white transition-colors"
                 >
                   {social.icon}
                 </a>
@@ -137,24 +241,55 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="mt-8 mb-6 h-px bg-white/15" />
+        <div
+          style={{
+            borderTop: '1px solid rgba(255,255,255,0.15)',
+            marginTop: '32px',
+            marginBottom: '24px',
+          }}
+        />
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[13px] leading-[19.5px] text-white/50" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: isDesktop ? 'row' : 'column',
+            alignItems: isDesktop ? 'center' : 'flex-start',
+            justifyContent: 'space-between',
+            gap: '12px',
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '13px',
+              lineHeight: '19.5px',
+              color: 'rgba(255,255,255,0.50)',
+              margin: 0,
+            }}
+          >
             Copyright 2026 Rise N Shine Foundation Inc. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-[13px] leading-[19.5px] text-white/50" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '13px',
+              lineHeight: '19.5px',
+              color: 'rgba(255,255,255,0.50)',
+            }}
+          >
             <Link to="/privacy-policy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <span className="text-[16px] leading-6">|</span>
+            <span style={{ fontSize: '16px', lineHeight: '24px' }}>|</span>
             <Link to="/terms" className="hover:text-white transition-colors">
               Terms and Conditions
             </Link>
           </div>
         </div>
-
       </div>
     </footer>
   )

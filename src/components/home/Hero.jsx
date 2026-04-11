@@ -114,24 +114,50 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
         custom={4}
-        className="
-          bg-[rgba(0,0,0,0.22)] border-t border-[rgba(255,255,255,0.12)]
-          px-5 py-8 sm:px-8
-        "
+        style={{
+          backgroundColor: '#FFFFFF',
+          padding: '32px 60px',
+          marginTop: 0,
+        }}
       >
-        <div className="max-w-[1100px] mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6">
-          {stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center text-center gap-1">
-              <span className="text-[#F5A623] text-[32px] font-bold leading-tight">
-                {stat.value}
-              </span>
-              <span className="text-[rgba(255,255,255,0.72)] text-[13px] uppercase tracking-[1px]">
-                {stat.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+      <div style={{
+        maxWidth: '900px',
+        margin: '0 auto',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: '32px',
+        textAlign: 'center',
+      }}>
+      {stats.map((stat) => (
+        <div key={stat.label} 
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '4px',
+        }}>
+        <span style={{
+          color: '#1A3C5E',
+          fontSize: '32px',
+          fontWeight: '700',
+          lineHeight: '1.2',
+          fontFamily: "'Urbanist', sans-serif",
+        }}>
+          {stat.value}
+        </span>
+        <span style={{
+          color: '#555555',
+          fontSize: '13px',
+          textTransform: 'uppercase',
+          letterSpacing: '1px',
+          fontFamily: "'Open Sans', sans-serif",
+        }}>
+          {stat.label}
+        </span>
+      </div>
+    ))}
+  </div>
+</motion.div>
     </section>
   );
 }
