@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@import "@fontsource/urbanist";
+@import "@fontsource/urbanist/400.css";
+@import "@fontsource/urbanist/600.css";
+@import "@fontsource/urbanist/700.css";
+
+@import "@fontsource/open-sans";
+@import "@fontsource/open-sans/400.css";
+@import "@fontsource/open-sans/600.css";
+@import "@fontsource/open-sans/700.css";
+
+:root {
+  --navy: #1A3C5E;
+  --yellow: #F5A623;
+  --off-white: #F7F7F5;
+  --dark: #1C1C1C;
+  --gray: #555555;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #1C1C1C;
+  background-color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Urbanist", sans-serif;
+}
