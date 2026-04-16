@@ -9,13 +9,13 @@ const fadeUp = {
   }),
 };
 
-export default function AboutHero() {
+export default function OurTeamHero() {
   return (
     <section
       style={{
-        backgroundColor: '#1A3C5E',
+        backgroundColor: '#F7F7F5',
         width: '100%',
-        minHeight: '60vh',
+        minHeight: '50vh',
         paddingTop: '80px',
         paddingBottom: '80px',
         paddingLeft: '24px',
@@ -24,7 +24,7 @@ export default function AboutHero() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '16px',
+        gap: '0',
         boxSizing: 'border-box',
       }}
     >
@@ -45,7 +45,7 @@ export default function AboutHero() {
           margin: 0,
         }}
       >
-        About Us
+        The People Behind The Work
       </motion.p>
 
       {/* Headline */}
@@ -59,12 +59,13 @@ export default function AboutHero() {
           fontWeight: '700',
           fontSize: '56px',
           lineHeight: '1.1',
-          color: '#FFFFFF',
+          color: '#1A3C5E',
           textAlign: 'center',
           margin: 0,
+          marginTop: '12px',
         }}
       >
-        Our Story
+        Meet the Team
       </motion.h1>
 
       {/* Subheadline */}
@@ -76,17 +77,17 @@ export default function AboutHero() {
         style={{
           fontFamily: "'Open Sans', sans-serif",
           fontWeight: '400',
-          fontSize: '20px',
+          fontSize: '19px',
           lineHeight: '1.7',
-          color: 'rgba(255, 255, 255, 0.8)',
+          color: '#555555',
           textAlign: 'center',
           maxWidth: '600px',
           margin: 0,
           marginTop: '16px',
         }}
       >
-        Founded by young leaders with a simple belief: communities get better
-        when people show up.
+        Youth-led. Community-powered. Every member of our team is a student or
+        young professional giving their time to build something bigger.
       </motion.p>
     </section>
   );

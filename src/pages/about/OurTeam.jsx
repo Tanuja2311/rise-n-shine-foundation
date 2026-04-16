@@ -1,3 +1,13 @@
+import OurTeamHero from '../../components/about/team/OurTeamHero';
+import FoundersSection from '../../components/about/team/FoundersSection';
+import ExecutiveTeam from '../../components/about/team/ExecutiveTeam';
+
 export default function OurTeam() {
-  return <div>Our Team</div>
+  return (
+    <>
+      <OurTeamHero />
+      <FoundersSection />
+      <ExecutiveTeam />
+    </>
+  );
 }
