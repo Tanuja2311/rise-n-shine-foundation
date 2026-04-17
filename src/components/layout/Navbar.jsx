@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -33,20 +33,54 @@ const navLinks = [
   { label: 'Contact', to: '/contact' },
 ]
 
-function DropdownMenu({ items }) {
+const dropdownItemBase = {
+  display: 'block',
+  padding: '10px 20px',
+  fontFamily: '"Open Sans", sans-serif',
+  fontSize: '14px',
+  fontWeight: '400',
+  color: '#1C1C1C',
+  textDecoration: 'none',
+  transition: 'background-color 150ms ease',
+  backgroundColor: 'transparent',
+}
+
+function DropdownMenu({ items, onClose }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.15 }}
-      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden z-50"
+      transition={{ duration: 0.15, ease: 'easeOut' }}
+      style={{
+        position: 'absolute',
+        top: 'calc(100% + 8px)',
+        left: 0,
+        minWidth: '220px',
+        backgroundColor: '#FFFFFF',
+        border: '1px solid #EEEEEE',
+        borderRadius: '12px',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+        padding: '8px 0',
+        zIndex: 50,
+      }}
     >
-      {items.map((item) => (
+      {items.map((item, i) => (
         <Link
           key={item.to}
           to={item.to}
-          className="block px-4 py-2.5 text-sm text-[#1c1c1c] hover:bg-[#FFF8EC] hover:text-[#1A3C5E] transition-colors"
+          onClick={onClose}
+          style={{
+            ...dropdownItemBase,
+            borderRadius:
+              i === 0
+                ? '12px 12px 0 0'
+                : i === items.length - 1
+                ? '0 0 12px 12px'
+                : '0',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#F7F7F5' }}
+          onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent' }}
         >
           {item.label}
         </Link>
@@ -58,6 +92,7 @@ function DropdownMenu({ items }) {
 function NavItem({ link, isActive }) {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
+  const closeTimer = useRef(null)
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -66,6 +101,17 @@ function NavItem({ link, isActive }) {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  const handleMouseEnter = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setOpen(true)
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    closeTimer.current = setTimeout(() => setOpen(false), 150)
+  }, [])
+
+  const handleClose = useCallback(() => setOpen(false), [])
 
   if (!link.dropdown) {
     return (
@@ -85,8 +131,8 @@ function NavItem({ link, isActive }) {
     <div
       ref={ref}
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <button
         className={`flex items-center gap-1 h-[31px] text-[16px] whitespace-nowrap transition-colors
@@ -101,7 +147,7 @@ function NavItem({ link, isActive }) {
         </svg>
       </button>
       <AnimatePresence>
-        {open && <DropdownMenu items={link.dropdown} />}
+        {open && <DropdownMenu items={link.dropdown} onClose={handleClose} />}
       </AnimatePresence>
     </div>
   )
