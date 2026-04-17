@@ -15,8 +15,18 @@ export default function MediaCard({ source, headline, date, link, index = 0 }) {
 
       {/* Content */}
       <div
-        className="bg-white rounded-b-[12px] px-4 py-6 flex flex-col gap-2 flex-1"
-        style={{ border: '0.8px solid #EEEEEE', borderTop: 'none' }}
+        className="bg-white flex flex-col"
+        style={{
+          borderLeft: '0.8px solid #EEEEEE',
+          borderRight: '0.8px solid #EEEEEE',
+          borderBottom: '0.8px solid #EEEEEE',
+          borderTop: 'none',
+          borderRadius: '0 0 12px 12px',
+          padding: '24px 16px',
+          gap: '8px',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
       >
         <p
           style={{
