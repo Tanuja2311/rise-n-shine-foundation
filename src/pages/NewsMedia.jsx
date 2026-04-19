@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import heroImage from '../../assets/News_and_media.png';
 import MediaCard from '../components/ui/MediaCard';
 
 const mediaItems = [
@@ -112,13 +113,11 @@ export default function NewsMedia() {
           overflow: 'hidden',
         }}
       >
-        {/* Background placeholder — swap div for <img> with real collage later */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(135deg, #0d2340 0%, #1A3C5E 55%, #1e4976 100%)',
-          }}
+        {/* Background image */}
+        <img
+          src={heroImage}
+          alt=""
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />
         {/* Navy overlay */}
         <div

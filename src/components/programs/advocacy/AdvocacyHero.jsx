@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import heroImage from '../../../../assets/Advocacy.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -14,19 +15,41 @@ export default function AdvocacyHero() {
   return (
     <section
       style={{
-        backgroundColor: '#1A3C5E',
+        position: 'relative',
         width: '100%',
+        minHeight: '781px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        overflow: 'hidden',
+        boxSizing: 'border-box',
+      }}
+    >
+      {/* Background image */}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+      {/* Navy overlay */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(26, 60, 94, 0.7)' }} />
+
+      {/* Content */}
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center',
         paddingTop: '96px',
         paddingBottom: '96px',
         paddingLeft: '24px',
         paddingRight: '24px',
         boxSizing: 'border-box',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-      }}
-    >
+      }}>
       {/* Breadcrumb */}
       <motion.p
         variants={fadeUp}
@@ -113,6 +136,7 @@ export default function AdvocacyHero() {
         fund composting in Maryland schools. It passed. Now we're making sure it
         stays funded.
       </motion.p>
+      </div>
     </section>
   );
 }

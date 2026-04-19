@@ -15,7 +15,7 @@ export default function EventsHero() {
       style={{
         backgroundColor: '#F7F7F5',
         width: '100%',
-        minHeight: '60vh',
+        minHeight: '781px',
         paddingTop: '80px',
         paddingBottom: '80px',
         paddingLeft: '24px',

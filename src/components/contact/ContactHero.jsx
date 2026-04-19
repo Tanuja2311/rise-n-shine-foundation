@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import heroImage from '../../../assets/Contact_Us.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,19 +14,38 @@ export default function ContactHero() {
   return (
     <section
       style={{
-        backgroundColor: '#1A3C5E',
-        paddingTop: '80px',
-        paddingBottom: '80px',
-        paddingLeft: '24px',
-        paddingRight: '24px',
-        minHeight: '60vh',
+        position: 'relative',
+        minHeight: '781px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        overflow: 'hidden',
         boxSizing: 'border-box',
       }}
     >
+      {/* Background image */}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+      {/* Navy overlay */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(26, 60, 94, 0.7)' }} />
+
+      {/* Content */}
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingTop: '80px',
+        paddingBottom: '80px',
+        paddingLeft: '24px',
+        paddingRight: '24px',
+        boxSizing: 'border-box',
+      }}>
       {/* Label */}
       <motion.p
         variants={fadeUp}
@@ -87,6 +107,7 @@ export default function ContactHero() {
         Have a question or want to learn more about what we do? We would love to
         hear from you.
       </motion.p>
+      </div>
     </section>
   );
 }

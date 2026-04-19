@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-const heroImage = 'https://www.figma.com/api/mcp/asset/7f17e8e5-8726-4f69-91e0-0263cc82facd';
+import heroImage from '../../../../assets/Food_Recovery.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -18,7 +17,7 @@ export default function FoodRecoveryHero() {
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: '60vh',
+        minHeight: '781px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -26,15 +25,10 @@ export default function FoodRecoveryHero() {
       }}
     >
       {/* Background image */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          zIndex: 0,
-        }}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
       />
 
       {/* Overlay */}

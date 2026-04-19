@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import heroImage from '../../../assets/Our_Programs.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,18 +14,38 @@ export default function ProgramsHero() {
   return (
     <section
       style={{
-        backgroundColor: '#F7F7F5',
+        position: 'relative',
         width: '100%',
-        paddingTop: '80px',
-        paddingBottom: '80px',
-        paddingLeft: '24px',
-        paddingRight: '24px',
+        minHeight: '781px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Background image */}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+      {/* Navy overlay */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(26, 60, 94, 0.7)' }} />
+
+      {/* Content */}
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         gap: '16px',
-      }}
-    >
+        paddingTop: '80px',
+        paddingBottom: '80px',
+        paddingLeft: '24px',
+        paddingRight: '24px',
+      }}>
       {/* Label */}
       <motion.p
         variants={fadeUp}
@@ -56,7 +77,7 @@ export default function ProgramsHero() {
           fontWeight: '700',
           fontSize: 'clamp(36px, 6vw, 60px)',
           lineHeight: '1.15',
-          color: '#1A3C5E',
+          color: '#FFFFFF',
           textAlign: 'center',
           margin: 0,
         }}
@@ -75,7 +96,7 @@ export default function ProgramsHero() {
           fontWeight: '400',
           fontSize: '20px',
           lineHeight: '1.7',
-          color: '#555555',
+          color: 'rgba(255, 255, 255, 0.8)',
           textAlign: 'center',
           maxWidth: '620px',
           margin: 0,
@@ -84,6 +105,7 @@ export default function ProgramsHero() {
         From rescuing food to advocating for policy change, everything we do is
         designed to create lasting impact in our community.
       </motion.p>
+      </div>
     </section>
   );
 }

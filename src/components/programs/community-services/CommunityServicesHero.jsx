@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-const heroImage =
-  'https://www.figma.com/api/mcp/asset/66decb7b-df34-4468-8421-a92a2f03d309';
+import heroImage from '../../../../assets/Community_Services.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,7 +17,7 @@ export default function CommunityServicesHero() {
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: '60vh',
+        minHeight: '781px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -27,15 +25,10 @@ export default function CommunityServicesHero() {
       }}
     >
       {/* Background image */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          zIndex: 0,
-        }}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
       />
 
       {/* Overlay */}

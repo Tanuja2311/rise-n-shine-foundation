@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import heroImage from '../../../../assets/about_meet_the_team.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,21 +14,39 @@ export default function OurTeamHero() {
   return (
     <section
       style={{
-        backgroundColor: '#F7F7F5',
+        position: 'relative',
         width: '100%',
-        minHeight: '50vh',
-        paddingTop: '80px',
-        paddingBottom: '80px',
-        paddingLeft: '24px',
-        paddingRight: '24px',
+        minHeight: '781px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '0',
+        overflow: 'hidden',
         boxSizing: 'border-box',
       }}
     >
+      {/* Background image */}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+      {/* Navy overlay */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(26, 60, 94, 0.7)' }} />
+
+      {/* Content */}
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingTop: '80px',
+        paddingBottom: '80px',
+        paddingLeft: '24px',
+        paddingRight: '24px',
+        boxSizing: 'border-box',
+      }}>
       {/* Label */}
       <motion.p
         variants={fadeUp}
@@ -59,7 +78,7 @@ export default function OurTeamHero() {
           fontWeight: '700',
           fontSize: '56px',
           lineHeight: '1.1',
-          color: '#1A3C5E',
+          color: '#FFFFFF',
           textAlign: 'center',
           margin: 0,
           marginTop: '12px',
@@ -79,7 +98,7 @@ export default function OurTeamHero() {
           fontWeight: '400',
           fontSize: '19px',
           lineHeight: '1.7',
-          color: '#555555',
+          color: 'rgba(255, 255, 255, 0.8)',
           textAlign: 'center',
           maxWidth: '600px',
           margin: 0,
@@ -89,6 +108,7 @@ export default function OurTeamHero() {
         Youth-led. Community-powered. Every member of our team is a student or
         young professional giving their time to build something bigger.
       </motion.p>
+      </div>
     </section>
   );
 }

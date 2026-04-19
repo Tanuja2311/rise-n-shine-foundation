@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import heroImage from '../../../assets/home_hero.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -19,14 +20,20 @@ const stats = [
 export default function Hero() {
   return (
     <section
-      className="relative flex flex-col min-h-screen"
-      style={{
-        /* Replace backgroundColor with a background image when photo is ready */
-        backgroundColor: '#1A3C5E',
-      }}
+      className="relative flex flex-col"
+      style={{ overflow: 'hidden', minHeight: '781px' }}
     >
+      {/* Background image */}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+      {/* Navy overlay */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(26, 60, 94, 0.7)' }} />
+
       {/* ── Hero content ─────────────────────────────────────────── */}
-      <div className="flex-1 flex items-center justify-center px-5 py-[120px] sm:px-8">
+      <div className="flex-1 flex items-center justify-center px-5 py-[120px] sm:px-8" style={{ position: 'relative', zIndex: 2 }}>
         <div className="w-full max-w-[870px] flex flex-col items-center gap-8">
 
           {/* Eyebrow */}
@@ -115,6 +122,8 @@ export default function Hero() {
         animate="visible"
         custom={4}
         style={{
+          position: 'relative',
+          zIndex: 2,
           backgroundColor: '#FFFFFF',
           padding: '32px 60px',
           marginTop: 0,

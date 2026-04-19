@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-const heroImage = 'https://www.figma.com/api/mcp/asset/5c8d7cde-b469-42e1-9b40-f230bc8083bc';
+import heroImage from '../../../../assets/School_Composting.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -18,7 +17,7 @@ export default function SchoolCompostingHero() {
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: '60vh',
+        minHeight: '781px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -26,15 +25,10 @@ export default function SchoolCompostingHero() {
       }}
     >
       {/* Background image */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          zIndex: 0,
-        }}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 0 }}
       />
 
       {/* Overlay */}

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import heroImage from '../../../assets/donate.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -13,19 +14,37 @@ export default function DonateHero() {
   return (
     <section
       style={{
-        backgroundColor: '#1A3C5E',
-        paddingTop: '80px',
-        paddingBottom: '80px',
+        position: 'relative',
+        minHeight: '781px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '24px',
-        paddingLeft: '20px',
-        paddingRight: '20px',
-        minHeight: '60vh',
+        overflow: 'hidden',
       }}
     >
+      {/* Background image */}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+      {/* Navy overlay */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(26, 60, 94, 0.7)' }} />
+
+      {/* Content */}
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '24px',
+        paddingTop: '80px',
+        paddingBottom: '80px',
+        paddingLeft: '20px',
+        paddingRight: '20px',
+      }}>
       {/* Headline */}
       <motion.h1
         variants={fadeUp}
@@ -93,6 +112,7 @@ export default function DonateHero() {
           EIN: 84-3822442
         </span>
       </motion.div>
+      </div>
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import heroImage from '../../../assets/about_our_story.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,21 +14,41 @@ export default function AboutHero() {
   return (
     <section
       style={{
-        backgroundColor: '#1A3C5E',
+        position: 'relative',
         width: '100%',
-        minHeight: '60vh',
-        paddingTop: '80px',
-        paddingBottom: '80px',
-        paddingLeft: '24px',
-        paddingRight: '24px',
+        minHeight: '781px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '16px',
+        overflow: 'hidden',
         boxSizing: 'border-box',
       }}
     >
+      {/* Background image */}
+      <img
+        src={heroImage}
+        alt=""
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+      />
+      {/* Navy overlay */}
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(26, 60, 94, 0.7)' }} />
+
+      {/* Content */}
+      <div style={{
+        position: 'relative',
+        zIndex: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '16px',
+        paddingTop: '80px',
+        paddingBottom: '80px',
+        paddingLeft: '24px',
+        paddingRight: '24px',
+        width: '100%',
+        boxSizing: 'border-box',
+      }}>
       {/* Label */}
       <motion.p
         variants={fadeUp}
@@ -88,6 +109,7 @@ export default function AboutHero() {
         Founded by young leaders with a simple belief: communities get better
         when people show up.
       </motion.p>
+      </div>
     </section>
   );
 }
